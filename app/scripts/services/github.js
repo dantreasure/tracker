@@ -26,7 +26,7 @@ angular.module('trackerApp')
         defer.resolve(numOfCommits);
       };
 
-      var url = 'https://api.github.com/users/dantreasure/events/public?since=' + oneWeekAgo;
+      var url = 'https://api.github.com/users/dantreasure/events/public?page=1&per_page=100';
 
       $http.get(url).success(handleApiResponse);
 
