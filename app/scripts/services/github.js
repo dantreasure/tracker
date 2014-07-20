@@ -15,11 +15,14 @@ angular.module('trackerApp')
 
       var handleApiResponse = function(response){
         var numOfCommits = 0;
+        var createEventsAndPushEvents = [];
         response.forEach(function(el, index){
-          if(el.type === "PushEvent"){
+          if(el.type === "PushEvent" && el.payload.ref || el.type === "CreateEvent" && el.payload.ref){
             numOfCommits++
+            createEventsAndPushEvents.push(el);
           }
         })
+        console.log(createEventsAndPushEvents);
         defer.resolve(numOfCommits);
       };
 
